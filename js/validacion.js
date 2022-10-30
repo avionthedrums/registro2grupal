@@ -1,8 +1,12 @@
 document.addEventListener("DOMContentLoaded", function(e){
     let password2 = document.getElementById("password2").addEventListener("keyup", ()=>{
         let password1 =  document.getElementById("password1");
+        let email= document.getElementById("email")
         if(password1.checkValidity()) {
             validarContraseña();
+        }
+        if(email.checkValidity()){
+          validarcorreo()
         }
     });
     let checkbox = document.getElementById("terminos");
@@ -65,4 +69,13 @@ document.addEventListener("DOMContentLoaded", function(e){
     }
 
   }
- 
+ function validarcorreo(){
+  let expresion = /^[-\w.%+]{1,64}@(?:[A-Z0-9-]{1,63}\.){1,125}[A-Z]{2,63}$/i;
+  let email = document.getElementById('email')
+  if (expresion.test(email.value)){
+    email.setCustomValidity("");
+}else{
+    email.setCustomValidity(false);
+    res=false;
+}
+ }
